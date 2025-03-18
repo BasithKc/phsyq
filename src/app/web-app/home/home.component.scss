@@ -1,0 +1,28 @@
+
+.hero-section{
+    background: linear-gradient(rgb(255 255 255 / 46%), rgb(255 255 255 / 50%)), url(../../../assets/images/hero.avif);
+    background-color: #deecf9;
+    padding-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+.card{
+    padding: 15px;
+}
+
+img.year-card-img{
+    border-radius: 15px;
+}
+
+.feature-section{
+    padding-top: 25px;
+}
+.card-title{
+    color: #4949dd;
+    font-size: 14px;
+    background: #e4f1ff;
+    width: fit-content;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-top: 5px;
+}

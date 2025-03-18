@@ -1,0 +1,9 @@
+<app-header></app-header>
+<div class="layout-content-wrapper" >
+  <div class="layout-content" (scroll)="scrollHandler($event)">
+    <div class="layout-content-inner">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

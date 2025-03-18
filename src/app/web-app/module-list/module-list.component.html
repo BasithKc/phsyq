@@ -1,0 +1,26 @@
+<div class="container py-5">
+    <h1 class="page-title mb-2">First Year Courses</h1>
+    <p class="subtitle mb-4">Select a course to access audio lectures</p>
+
+    <div class="row g-4">
+        @for (course of courses; track $index) {
+        <!-- Course 1 -->
+        <div class="col-md-6 col-lg-4" [routerLink]="['/lesson']">
+            <div class="course-card card">
+                <div class="card-header">
+                    {{course.title}}
+                </div>
+                <div class="card-body">
+                    <p class="course-description">{{course.description}}</p>
+                    <div class="lecture-info">
+                        <div class="icon-circle">
+                            <i class="bi bi-play-fill"></i>
+                        </div>
+                        {{course.lectureCount}} audio lectures
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

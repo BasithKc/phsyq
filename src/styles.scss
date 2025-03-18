@@ -1,1 +1,180 @@
-/* You can add global styles to this file, and also import other style files */
+   :root {
+    --primary-color: #4e2a84;
+    --secondary-color: #836EAA;
+    --light-purple: #f5f2f9;
+    --hover-color: #3a1f62;
+  }
+
+.logo-color {
+    color: #7b5cf1;
+}
+
+.btn-primary {
+    background-color: #7b5cf1;
+    border-color: #7b5cf1;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #6a4de0;
+    border-color: #6a4de0;
+}
+
+.btn-outline-primary {
+    color: #7b5cf1;
+    border-color: #7b5cf1;
+}
+
+.btn-outline-primary:hover {
+    background-color: #7b5cf1;
+    color: white;
+}
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.audio-progress {
+    height: 6px;
+}
+
+.audio-progress .progress-bar {
+    background-color: #7b5cf1;
+}
+
+.year-card-img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.audio-lecture {
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    transition: transform 0.2s;
+}
+
+.audio-lecture:hover {
+    transform: translateY(-3px);
+}
+
+.audio-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #7b5cf1;
+    color: white;
+}
+
+footer {
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    .year-card-img {
+        height: 160px;
+    }
+    
+    .audio-lecture {
+        padding: 15px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 28px !important;
+    }
+    
+    .lead {
+        font-size: 16px;
+    }
+}
+
+.back-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .back-link:hover {
+    color: var(--hover-color);
+  }
+  
+  .page-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    color: #6c757d;
+    font-weight: 400;
+  }
+  
+  .course-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    border: none;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  .card-header {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 1rem;
+    border-bottom: none;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .course-description {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    min-height: 50px;
+  }
+  
+  .lecture-info {
+    display: flex;
+    align-items: center;
+    color: var(--secondary-color);
+    font-weight: 500;
+  }
+  
+  .icon-circle {
+    background-color: var(--light-purple);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+  
+  .icon-circle i {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+  }
