@@ -19,7 +19,7 @@ export class HomeComponent {
         slNo: 1, 
         title: 'Year 1',
         description: 'Foundation courses in psychology, research methods, and human behavior.',
-        img: '/assets/images/brain.jpg' 
+        img: '/assets/images/brain.jpg',
       },
       { 
         slNo: 2, 

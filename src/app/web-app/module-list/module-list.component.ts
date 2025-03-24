@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-module-list',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, DialogModule, FormsModule, CommonModule],
   templateUrl: './module-list.component.html',
   styleUrl: './module-list.component.scss'
 })
 export class ModuleListComponent {
+  dialogHeader: string = 'Add Module'
+  showDialog: boolean = false
+
   courses: any[] = [
     {
       id: 1,
@@ -47,4 +53,16 @@ export class ModuleListComponent {
       lectureCount: 7
     }
   ];
+
+  openDialog() {
+    this.showDialog = true
+  }
+
+  closeDialog() {
+    this.showDialog = false
+  }
+
+  save() {
+
+  }
 }

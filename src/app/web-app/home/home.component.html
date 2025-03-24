@@ -19,7 +19,7 @@
                         <div class="card-body p-0 pt-2">
                             <h5 class="card-title">{{year.title}}</h5>
                             <p class="card-text text-muted">{{year.description}}</p>
-                            <a [routerLink]="['/module-list']" class="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center justify-content-md-start mt-3" style="width: fit-content;">
+                            <a [routerLink]="['/module-list', year.slNo]" class="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center justify-content-md-start mt-3" style="width: fit-content;">
                                 Explore Course Content
                                 <i class="bi bi-arrow-right ms-2"></i>
                             </a>

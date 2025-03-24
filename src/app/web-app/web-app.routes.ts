@@ -9,7 +9,7 @@ export const webAppRoutes: Routes = [
         path: '', component: WebAppComponent,
         children: [
             { path: "", component: HomeComponent },
-            { path: "module-list", component: ModuleListComponent },
+            { path: "module-list/:year-id", component: ModuleListComponent },
             { path: "lesson", component: LessonComponent }
         ]
     }
