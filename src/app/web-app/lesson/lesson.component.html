@@ -14,31 +14,22 @@
       <!-- Sidebar with lecture list -->
       <div class="col-md-4 sidebar mb-4 mb-md-0 shadow">
         <h2>Lectures</h2>
-        
-        <div class="lecture-item active">
-          <h3 class="lecture-title">The Science of Psychology</h3>
-          <p class="lecture-description">Overview of psychology as a scientific discipline</p>
-        </div>
-        
-        <div class="lecture-item">
-          <h3 class="lecture-title">Research Methods in Psychology</h3>
-          <p class="lecture-description">Scientific methods used in psychological research</p>
-        </div>
-        
-        <div class="lecture-item">
-          <h3 class="lecture-title">The Brain and Behavior</h3>
-          <p class="lecture-description">Neurological foundations of psychological processes</p>
-        </div>
-        
-        <div class="lecture-item">
-          <h3 class="lecture-title">Sensation and Perception</h3>
-          <p class="lecture-description">How we sense and interpret our environment</p>
-        </div>
-        
-        <div class="lecture-item">
-          <h3 class="lecture-title">Learning and Memory</h3>
-          <p class="lecture-description">Cognitive processes involved in acquiring knowledge</p>
-        </div>
+        @for (lesson of lessons; track $index) {
+          <div class="lecture-item active">
+            <div class="lesson-header">
+              <h3 class="lecture-title">{{lesson.title}}</h3>
+              <div class="text-end">
+                <button class="mr-2" [pTooltip]="'Edit'" (click)="editLesson(lesson)">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button [pTooltip]="'Delete'" (click)="deleteLesson(lesson)">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </div>
+            </div>
+            <p class="lecture-description">{{lesson.description}}</p>
+          </div>
+        }
       </div>
       
       <!-- Main content - audio player -->

@@ -248,6 +248,7 @@ button{
   border: none;
   padding: 4px 20px;
   background: #7b5cf1;
+  margin-right: 10px;
 }
 
 .cancel-btn {
@@ -258,4 +259,16 @@ button{
 input, textarea {
   width: 100%;
   padding: 25px 12px 2px 12px;
+}
+
+.lesson-header {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.lesson-header button {
+  padding: 4px 10px;
+  border-radius: 10px;  
 }

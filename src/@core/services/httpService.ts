@@ -22,4 +22,8 @@ export class HttpService {
     saveLesson(api: string, form: Lesson) {
         return this.http.post(`${Environment.baseUrl}${api}`, form)
     }
+
+    getLessons(api: string, moduleId: string) {
+        return this.http.get(`${Environment.baseUrl}${api}?moduleId=${moduleId}`);
+    }
 }

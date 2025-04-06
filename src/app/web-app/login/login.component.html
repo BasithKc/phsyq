@@ -1,0 +1,78 @@
+
+<div class="main">
+
+    @if (!isLogin) {
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form class="register-form" >
+                            <div class="form-group">
+                                <label for="name"><i class="bi bi-person-fill"></i></label>
+                                <input  [(ngModel)]="signupData.name" type="text" name="name" id="name" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="bi bi-envelope-fill"></i></label>
+                                <input [(ngModel)]="signupData.email" type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="bi bi-lock-fill"></i></label>
+                                <input [(ngModel)]="signupData.password" type="password" name="pass" id="pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="bi bi-lock"></i></label>
+                                <input [(ngModel)]="signupData.confirmPassword" type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                            </div>
+                            <div class="form-group form-button" (click)="signup()">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+    
+                    <div class="signup-image">
+                        <figure><img src="assets/images/signup-image.jpg" alt="sing up image"></figure>
+                        <a (click)="toggleSignup()" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }@else {
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="assets/images/signin-image.jpg" alt="sing up image"></figure>
+                        <a (click)="toggleSignup()" class="signup-image-link">Create an account</a>
+                    </div>
+    
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign in</h2>
+                        <form  class="register-form" >
+                            <div class="form-group">
+                                <label for="email"><i class="bi bi-person-fill"></i></label>
+                                <input [(ngModel)]="loginData.email" type="text" name="email" id="email" placeholder="Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="bi bi-lock-fill"></i></label>
+                                <input [(ngModel)]="loginData.password" type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group form-button" (click)="login()">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                        <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center bi bi-google zmdi zmdi-google"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    }
+</div>
