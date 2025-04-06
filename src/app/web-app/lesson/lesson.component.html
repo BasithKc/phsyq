@@ -1,12 +1,18 @@
 <div class="container main-container py-4">
     <div class="page-header">
-      <h1 class="page-title">Introduction to Psychology</h1>
-      <p class="subtitle">Audio lectures for this course</p>
+      <div>
+        <h1 class="page-title">Introduction to Psychology</h1>
+        <p class="subtitle">Audio lectures for this course</p>
+      </div>
+
+      <div>
+        <button class="btn" (click)="openDialog()"><i class="bi bi-plus"></i> Add Lesson</button> 
+     </div>
     </div>
     
     <div class="row">
       <!-- Sidebar with lecture list -->
-      <div class="col-md-4 sidebar mb-4 mb-md-0">
+      <div class="col-md-4 sidebar mb-4 mb-md-0 shadow">
         <h2>Lectures</h2>
         
         <div class="lecture-item active">
@@ -36,7 +42,7 @@
       </div>
       
       <!-- Main content - audio player -->
-      <div class="col-md-8">
+      <div class="col-md-8 shadow">
         <div class="player-container">
           <h2 class="player-title">The Science of Psychology</h2>
           
@@ -80,3 +86,39 @@
       </div>
     </div>
   </div>
+
+  <p-dialog [header]="dialogHeader" [modal]="true" [(visible)]="showDialog" (visibleChange)="closeDialog()"
+  [style]="{ width: '30rem' }">
+  <form #moduleForm="ngForm">
+    <div class="space-y-4">
+      <div class="grid grid-cols-1 gap-4">
+        <div class="flex justify-center mt-2">
+          <p-iftalabel>
+             <input pInputText name="code" id="code" [(ngModel)]="input.code" autocomplete="off" />
+             <label for="code">Code</label>
+         </p-iftalabel>
+      </div>
+      
+      <div class="flex justify-center mt-4">
+        <p-iftalabel>
+           <input pInputText name="title" id="title" [(ngModel)]="input.title" autocomplete="off" />
+           <label for="title">Title</label>
+       </p-iftalabel>
+    </div>
+
+    <div class="flex justify-center mt-4">
+      <p-iftalabel>
+         <textarea pInputText name="description" id="description" [(ngModel)]="input.description" autocomplete="off"></textarea>
+         <label for="description">Description</label>
+     </p-iftalabel>
+  </div>
+      </div>
+    </div>
+    <div class="text-end mt-4">
+      <button type="button" class="mr-2  btn cancel-btn" (click)="closeDialog()"><i
+          class="fa-solid fa-times me-2"></i>Cancel</button>
+          <button type="button" class="btn-green hover:bg-[#d99d3f] btn" (click)="save()"><i
+            class="fa-solid fa-save me-2"></i>Save</button>
+    </div>
+  </form>
+</p-dialog>

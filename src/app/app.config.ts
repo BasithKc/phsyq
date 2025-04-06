@@ -5,9 +5,13 @@ import Aura from '@primeng/themes/aura';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HttpService } from '../@core/services/httpService';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(withFetch(),),
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
     provideClientHydration(),
@@ -17,5 +21,7 @@ export const appConfig: ApplicationConfig = {
           preset: Aura
       }
   }),
+  MessageService,
+  ConfirmationService
   ]
 };

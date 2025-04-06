@@ -5,8 +5,25 @@
   }
 
   button{
-    background: #7b5cf1;
     color: white;
     border: none;
     padding: 4px 20px;
+    background: #7b5cf1;
+  }
+
+  .cancel-btn {
+    background-color: #7f8289;
+    margin-right: 10px;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  h3{
+    color: gray;
+  }
+  .card-header button {
+    background: transparent;
+    padding: 4px 10px;
   }

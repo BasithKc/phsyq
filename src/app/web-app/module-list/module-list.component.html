@@ -6,29 +6,42 @@
         </div>
 
         <div>
-           <button (click)="openDialog()"><i class="bi bi-plus"></i> Add</button> 
+           <button class="btn" (click)="openDialog()"><i class="bi bi-plus"></i> Add</button> 
         </div>
     </div>
 
     <div class="row g-4">
-        @for (course of courses; track $index) {
+        @for (course of modules; track $index) {
         <!-- Course 1 -->
-        <div class="col-md-6 col-lg-4" [routerLink]="['/lesson']">
+        <div class="col-md-6 col-lg-4" >
             <div class="course-card card">
                 <div class="card-header">
                     {{course.title}}
+                    <div class="text-end">
+                      <button  [pTooltip]="'Edit'" (click)="editModule(course)">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                      <button [pTooltip]="'Delete'" (click)="deleteModule(course)">
+                        <i class="bi bi-trash-fill"></i>
+                      </button>
+                    </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body" (click)="navigateToLesson(course._id)">
                     <p class="course-description">{{course.description}}</p>
                     <div class="lecture-info">
                         <div class="icon-circle">
                             <i class="bi bi-play-fill"></i>
                         </div>
-                        {{course.lectureCount}} audio lectures
+                        <!-- {{course.lectureCount}} -->
+                          lectures
                     </div>
                 </div>
             </div>
         </div>
+        }
+
+        @if(modules.length ==0) {
+          <h3 class="text-center">No data found!</h3>
         }
     </div>
 </div>
@@ -38,34 +51,33 @@
   <form #moduleForm="ngForm">
     <div class="space-y-4">
       <div class="grid grid-cols-1 gap-4">
-        <div>
-          <label class="block mb-2 text-sm">Code</label>
-          <input type="text" maxlength="10"
-            class="block w-full px-4 py-3">
-        </div>
-        <div class="col-sm-12 col-md-12 col-xl-12 col-xxl-12 col-12 col-lg-12 mb-4 position-relative">
-            <label for="Code" class="form-label-new required">Code</label>
-            <span class="form-control-new">
-                <input type="text" name="Code" id="Code" class="form-control" required="" maxlength="10">
-            </span>
-        </div>
-        <div>
-          <label class="block mb-2 text-sm">Label</label>
-          <input type="text" maxlength="100"
-            class="block w-full px-4 py-3">
-        </div>
+        <div class="flex justify-center mt-2">
+          <p-iftalabel>
+             <input pInputText [required]="true" name="code" id="code" [(ngModel)]="input.code" autocomplete="off" />
+             <label  class="required" for="code">Code</label>
+         </p-iftalabel>
+      </div>
+      
+      <div class="flex justify-center mt-4">
+        <p-iftalabel>
+           <input pInputText [required]="true" name="title" id="title" [(ngModel)]="input.title" autocomplete="off" />
+           <label  class="required" for="title">Title</label>
+       </p-iftalabel>
+    </div>
 
-        <div>
-          <label class="block mb-2 text-sm">Display Order</label>
-          <input type="number" class="block w-full px-4 py-3">
-        </div>
+    <div class="flex justify-center mt-4">
+      <p-iftalabel>
+         <textarea pInputText [required]="true" name="description" id="description" [(ngModel)]="input.description" autocomplete="off"></textarea>
+         <label for="description" class="required">Description</label>
+     </p-iftalabel>
+  </div>
       </div>
     </div>
-    <div class="flex justify-end">
-      <button type="button" class="btn-yellow btn mr-2" (click)="closeDialog()"><i
+    <div class="text-end mt-4">
+      <button type="button" class="mr-2  btn cancel-btn" (click)="closeDialog()"><i
           class="fa-solid fa-times me-2"></i>Cancel</button>
-          <button type="button" class="btn-green hover:bg-[#d99d3f] btn" (click)="save()"><i
-            class="fa-solid fa-save me-2"></i>Save</button>
+          <button type="button" class="btn-green hover:bg-[#d99d3f] btn" [disabled]="moduleForm.invalid" (click)="save()"><i
+            class="fa-solid fa-save me-2" ></i>Save</button>
     </div>
   </form>
 </p-dialog>

@@ -14,6 +14,8 @@
   
   .page-header {
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
   }
   
   .page-title {
@@ -239,4 +241,21 @@
       width: 50px;
       height: 50px;
     }
+}
+
+button{
+  color: white;
+  border: none;
+  padding: 4px 20px;
+  background: #7b5cf1;
+}
+
+.cancel-btn {
+  background-color: #7f8289;
+  margin-right: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 25px 12px 2px 12px;
 }

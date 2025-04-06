@@ -143,6 +143,9 @@ footer {
     font-weight: 600;
     padding: 1rem;
     border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .card-body {
@@ -177,4 +180,26 @@ footer {
   .icon-circle i {
     color: var(--primary-color);
     font-size: 0.8rem;
+  }
+
+  button{
+    color: white;
+    border: none;
+    padding: 4px 20px;
+    background: #7b5cf1;
+  }
+
+  .cancel-btn {
+    background-color: #7f8289;
+    margin-right: 10px;
+  }
+  input,textarea {
+    width: 100%;
+  }
+
+  .required::after {
+    content: '*';
+    color: red;
+    font-size: 12px; 
+    margin-left: 4px;
   }
