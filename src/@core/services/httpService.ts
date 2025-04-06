@@ -11,6 +11,14 @@ import { Lesson } from "../../app/models/lessons";
 export class HttpService {
     http = inject(HttpClient)
 
+    login(api: string) {
+
+    }
+
+    signup(api: string) {
+
+    }
+
     saveModule(api: string, form: Module) {
        return this.http.post(`${Environment.baseUrl}${api}`, form)
     }
