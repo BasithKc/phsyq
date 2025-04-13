@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Environment } from "../../app/env/api.route";
 import { Module } from "../../app/models/Module";
@@ -10,28 +10,23 @@ import { Lesson } from "../../app/models/lessons";
 
 export class HttpService {
     http = inject(HttpClient)
-
-    login(api: string) {
-
+    
+    private getFullUrl(api:string): string {
+        return `${Environment.baseUrl}${api}`
     }
 
-    signup(api: string) {
+    get<T>(api:string, queryParams?:any) {
+        let params = new HttpParams();
+        if(queryParams) {
+            Object.keys(queryParams).forEach(key => {
+                params = params.set(key, queryParams[key])
+            })
+        }
 
+        return this.http.get<T>(this.getFullUrl(api), {params})
     }
 
-    saveModule(api: string, form: Module) {
-       return this.http.post(`${Environment.baseUrl}${api}`, form)
+    post<T>(api: string, body: any) {
+        return this.http.post<T>(this.getFullUrl(api), body)
     }
-
-    getModules(api: string, year: number) {
-        return this.http.get(`${Environment.baseUrl}${api}?year=${year}`);
-    }
-
-    saveLesson(api: string, form: Lesson) {
-        return this.http.post(`${Environment.baseUrl}${api}`, form)
-    }
-
-    getLessons(api: string, moduleId: string) {
-        return this.http.get(`${Environment.baseUrl}${api}?moduleId=${moduleId}`);
-    }
-}
+} 

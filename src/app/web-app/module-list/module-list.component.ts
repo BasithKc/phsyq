@@ -20,7 +20,7 @@ import { OperationModeEnum } from '../../../@core/enums/OperationModeEnum';
   styleUrl: './module-list.component.scss'
 })
 export class ModuleListComponent {
-  dialogHeader: string = 'Add Module'
+  dialogHeader: string = ''
   showDialog: boolean = false
   modules: Module[] = [];
   input: Module = new Module()
@@ -41,13 +41,14 @@ export class ModuleListComponent {
   }
 
   getModules() {
-    this.httpService.getModules('/module/get', this.currentYear).subscribe((res: any) => {
+    this.httpService.get('/module/get', {year: this.currentYear}).subscribe((res: any) => {
       this.modules = res.modules
     })
   }
 
   openDialog() {
     this.showDialog = true
+    this.dialogHeader = 'Add Module'
     this.input.opsMode = OperationModeEnum.insert
     this.input.year = this.currentYear
   }
@@ -59,7 +60,7 @@ export class ModuleListComponent {
   }
 
   save() {
-    this.httpService.saveModule('/module/saveModule', this.input).subscribe((res: any) => {
+    this.httpService.post('/module/saveModule', this.input).subscribe((res: any) => {
       this.messageService.add({ severity: res.msgType, summary: res.retMsg })
       this.closeDialog()
       this.getModules()
@@ -89,7 +90,7 @@ export class ModuleListComponent {
       accept: () => {
         this.input.opsMode = OperationModeEnum.delete
 
-        this.httpService.saveModule('/module/saveModule', course).subscribe((res: any) => {
+        this.httpService.post('/module/saveModule', course).subscribe((res: any) => {
           this.messageService.add({ severity: res.msgType, summary: res.retMsg })
           this.getModules()
         })
@@ -99,6 +100,7 @@ export class ModuleListComponent {
 
   editModule(course: Module) {
     this.input = Object.assign({}, course);
+    this.dialogHeader = 'Edit Module'
     this.input.opsMode = OperationModeEnum.update
     this.showDialog = true
   }

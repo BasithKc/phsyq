@@ -5,8 +5,16 @@
     --hover-color: #3a1f62;
   }
 
+  body{
+    background: azure;
+  }
+
 .logo-color {
-    color: #7b5cf1;
+  color: #ca0057;
+}
+
+.white-bg{
+  background-color: white;
 }
 
 .btn-primary {
@@ -113,7 +121,7 @@ footer {
   }
   
   .page-title {
-    color: var(--primary-color);
+    color: #ca0057;
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
@@ -138,7 +146,7 @@ footer {
   }
   
   .card-header {
-    background-color: var(--primary-color);
+    background-color: #ca0057;
     color: white;
     font-weight: 600;
     padding: 1rem;
@@ -202,4 +210,16 @@ footer {
     color: red;
     font-size: 12px; 
     margin-left: 4px;
+  }
+
+  .dlt-btn {
+    background-color: red !important;
+    padding: 1px 5px !important;
+    font-size: 15px !important;
+  }
+
+  .edit-btn{
+    background-color: blue !important;
+    padding: 1px 5px !important;
+    font-size: 15px !important;
   }

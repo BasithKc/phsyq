@@ -1,6 +1,6 @@
 export class Lesson {
+    _id!: string
     moduleId!:string;
-    lessonId!: string;
     code!: string;
     title!: string;
     description!: string;

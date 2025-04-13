@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../../@core/template/footer/footer.component';
 import { ToastModule } from "primeng/toast"
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ProgressSpinner } from 'primeng/progressspinner'
 
 @Component({
   selector: 'app-web-app',
   standalone: true,
-  imports: [HeaderComponent, RouterModule, FooterComponent, ToastModule, ConfirmDialogModule],
+  imports: [HeaderComponent, RouterModule, FooterComponent, ToastModule, ConfirmDialogModule, ProgressSpinner],
   templateUrl: './web-app.component.html',
   styleUrl: './web-app.component.scss'
 })
