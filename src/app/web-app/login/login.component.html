@@ -11,24 +11,45 @@
                         <form class="register-form" >
                             <div class="form-group">
                                 <label for="name"><i class="bi bi-person-fill"></i></label>
-                                <input  [(ngModel)]="signupData.name" type="text" name="name" id="name" placeholder="Your Name"/>
+                                <input  [(ngModel)]="signupData.name" [required]="true" type="text" name="name" id="name" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="bi bi-envelope-fill"></i></label>
-                                <input [(ngModel)]="signupData.email" type="email" name="email" id="email" placeholder="Your Email"/>
+                                <input [(ngModel)]="signupData.email" [required]="true" type="email" name="email" id="email" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="bi bi-lock-fill"></i></label>
-                                <input [(ngModel)]="signupData.password" type="password" name="pass" id="pass" placeholder="Password"/>
+                                <input [(ngModel)]="signupData.password" [required]="true" type="password" name="pass" id="pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="bi bi-lock"></i></label>
-                                <input [(ngModel)]="signupData.confirmPassword" type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                                <input [(ngModel)]="signupData.confirmPassword" [required]="true" type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
-                            <div class="form-group form-button" (click)="signup()">
+                            @if (errorMsg) {
+                                <div>
+                                    <small class="error-msg">{{errorMsg}}</small>
+                                </div>
+                            }
+                            @if (isOtp) {
+                                <div class="form-group">
+                                    <label for="otp"><i class="bi bi-compass"></i></label>
+                                    <input  [(ngModel)]="signupData.otp" [required]="true" type="text" name="otp" id="otp" placeholder="Enter OTP"/>
+                                </div>
+                                <p class="otp-text">An OTP has been sent to the mail.</p>
+                                <span>Not received yet? Check span folder OR </span><a class="resend-otp" (click)="resendOTP()">Resend OTP.</a>
+                            }
+                           
+                            <div class="form-group form-button" (click)="isOtp ? verifyOtp() : signup() ">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
                             </div>
                         </form>
+
+                        <div class="social-login">
+                            <span class="social-label">Or Signup with</span>
+                            <ul class="socials">
+                                <li (click)="signWithGoogle()"><a><img class="google-icon" src="assets/images/Google_Icons-09-512.webp" alt=""></a></li>
+                            </ul>
+                        </div>
                     </div>
     
                     <div class="signup-image">
@@ -59,6 +80,20 @@
                                 <label for="your_pass"><i class="bi bi-lock-fill"></i></label>
                                 <input [(ngModel)]="loginData.password" type="password" name="your_pass" id="your_pass" placeholder="Password"/>
                             </div>
+                            @if (loginErrorMsg) {
+                                <div>
+                                    <small class="error-msg">{{loginErrorMsg}}</small>
+                                </div>
+                            }
+                            @if (isLoginOtp) {
+                                <div class="form-group">
+                                    <label for="otp"><i class="bi bi-compass"></i></label>
+                                    <input  [(ngModel)]="loginData.otp" [required]="true" type="text" name="otp" id="otp" placeholder="Enter OTP"/>
+                                </div>
+                                <p class="otp-text">An OTP has been sent to the mail.</p>
+                                <span>Not received yet? Check span folder OR </span><a class="resend-otp" (click)="resendOTP('login')">Resend OTP.</a>
+                            }
+                            
                             <div class="form-group form-button" (click)="login()">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                             </div>
@@ -66,7 +101,7 @@
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center bi bi-google zmdi zmdi-google"></i></a></li>
+                                <li (click)="signWithGoogle()"><a><img class="google-icon" src="assets/images/Google_Icons-09-512.webp" alt=""></a></li>
                             </ul>
                         </div>
                     </div>

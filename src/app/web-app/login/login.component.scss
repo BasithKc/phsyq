@@ -345,7 +345,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -webkit-align-items: center;
     -o-align-items: center;
     -ms-align-items: center;
-    margin-top: 80px; }
+    margin-top: 20px; }
   
   .social-label {
     display: inline-block;
@@ -477,4 +477,19 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
 input {
     background: none;
     color: black
+}
+
+.error-msg{
+  color: red;
+}
+.otp-text{
+  color: green;
+}
+.google-icon{
+  background: gainsboro;
+  width: 40px;
+}
+.resend-otp{
+  color: blue;
+  text-decoration: underline;
 }

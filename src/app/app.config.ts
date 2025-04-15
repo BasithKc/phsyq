@@ -6,8 +6,10 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpService } from '../@core/services/httpService';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { AuthInterceptor } from '../@core/interceptor/auth.interceptor';
+import { LoaderInterceptor } from '../@core/interceptor/loader.inteerceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +24,16 @@ export const appConfig: ApplicationConfig = {
       }
   }),
   MessageService,
-  ConfirmationService
+  ConfirmationService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoaderInterceptor,
+    multi: true
+  }
   ]
 };
