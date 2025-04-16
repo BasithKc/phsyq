@@ -14,22 +14,38 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Resources</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Community</a>
-                    </li>
                 </ul>
                 <div>
-                    <a href="#" class="text-decoration-none">
-                        <i class="bi bi-person-circle logo-color fs-5"></i>
-                    </a>
+                    @if (loggedUser) {
+                        <a (click)="showProfileDialog = true" class="text-decoration-none">
+                            <i class="bi bi-person-circle logo-color fs-5"></i>
+                        </a>
+                          
+                    }@else { 
+                        <a [routerLink]="['/login']" class="sign-in">Signin</a>
+                    }
                 </div>
             </div>
         </div>
     </nav>
 </header>
+
+<p-dialog
+  [(visible)]="showProfileDialog"
+  [header]="'Profile'"
+  [modal]="true"
+  [style]="{ width: '300px' }"
+  [draggable]="false"
+  [resizable]="false"
+  [position]="'topright'"
+  contentStyleClass="profile-dialog-content"
+>    <div class="profile-dialog">
+      <div class="avatar">
+        {{ loggedUser.name?.charAt(0).toUpperCase() }}
+      </div>
+      <div class="details">
+        <div class="name">{{ loggedUser.name }}</div>
+        <div class="email">{{ loggedUser.email }}</div>
+      </div>
+    </div>
+</p-dialog>

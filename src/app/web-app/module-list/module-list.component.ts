@@ -25,6 +25,7 @@ export class ModuleListComponent {
   modules: Module[] = [];
   input: Module = new Module()
   currentYear!: number;
+  isAddButton!: boolean;
   @ViewChild('moduleForm') moduleForm!: NgForm;
 
   httpService: HttpService = inject(HttpService)
@@ -43,6 +44,7 @@ export class ModuleListComponent {
   getModules() {
     this.httpService.get('/module/get', {year: this.currentYear}).subscribe((res: any) => {
       this.modules = res.modules
+      this.isAddButton = res.button
     })
   }
 

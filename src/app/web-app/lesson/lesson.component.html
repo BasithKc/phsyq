@@ -10,14 +10,17 @@
       <div class="col-md-4 sidebar mb-4 mb-md-0 shadow white-bg">
         <div class="d-flex justify-content-between align-items-center sidebar-header">
           <h2 class="mt-2">Lectures</h2>
-          <div>
-            <button class="btn" (click)="openDialog()"><i class="bi bi-plus"></i> Add Lesson</button> 
-         </div>
+          @if (isAddButton) {
+            <div>
+              <button class="btn" (click)="openDialog()"><i class="bi bi-plus"></i> Add Lesson</button> 
+           </div>
+          }
         </div>
         @for (lesson of lessons; track $index) {
           <div class="lecture-item" (click)="changeLesson(lesson)" [ngClass]="{'active': lesson._id == currentLesson._id}">
             <div class="lesson-header">
               <h3 class="lecture-title">{{lesson.title}}</h3>
+              @if (isAddButton) {
               <div class="text-end">
                 <button class="mr-2 edit-btn" [pTooltip]="'Edit'" (click)="editLesson(lesson)">
                   <i class="bi bi-pencil-square"></i>
@@ -26,6 +29,7 @@
                   <i class="bi bi-trash-fill"></i>
                 </button>
               </div>
+            }
             </div>
             <p class="lecture-description">{{lesson.description}}</p>
           </div>
@@ -34,17 +38,18 @@
       
       <!-- Main content -->
       <div class="col-md-8 shadow main-content white-bg">
-        <div class="text-end">
-            @if (lessonContent?.length == 0 && !isAddLesson) {
-            <button (click)="addLessonContent()" class="btn mt-2"><i class="bi bi-plus"></i> Add Lesson Content</button> 
-            }@else if(isAddLesson) {
-              <button (click)="submitLesson()"  class="btn mt-2 submit-btn"><i class="bi bi-bookmark-check-fill me-2"></i>Submit</button> 
-              <button (click)="cancelEdit()"  class="btn mt-2 cancel-btn"><i class="bi bi-x-lg me-2"></i>Cancel</button> 
-            }
-        </div>
-        @if (isAddLesson) {
-          <div class="flex flex-col gap-6 items-center justify-center mt-4">
-            <p-fileupload #fu mode="basic" chooseLabel="Choose" (onSelect)="onVideoSelect($event)" chooseIcon="pi pi-upload" name="demo[]"  accept="video/*" maxFileSize="1000000000"/>
+        @if (isAddButton) {
+          <div class="text-end">
+              @if (lessonContent?.length == 0 && !isAddLesson) {
+              <button (click)="addLessonContent()" class="btn mt-2"><i class="bi bi-plus"></i> Add Lesson Content</button> 
+              }@else if(isAddLesson) {
+                <button (click)="submitLesson()"  class="btn mt-2 submit-btn"><i class="bi bi-bookmark-check-fill me-2"></i>Submit</button> 
+                <button (click)="cancelEdit()"  class="btn mt-2 cancel-btn"><i class="bi bi-x-lg me-2"></i>Cancel</button> 
+              }
+          </div>
+          @if (isAddLesson) {
+            <div class="flex flex-col gap-6 items-center justify-center mt-4">
+              <p-fileupload #fu mode="basic" chooseLabel="Choose" (onSelect)="onVideoSelect($event)" chooseIcon="pi pi-upload" name="demo[]"  accept="video/*" maxFileSize="1000000000"/>
           </div>
           <div *ngIf="videoPreviewUrl" class="flex items-center gap-2 text-gray-700 preview-container">
             <i class="bi bi-camera-video-fill me-2"></i>
@@ -57,11 +62,14 @@
             <p-editor [(ngModel)]="text" [style]="{ height: '320px' }" />
           </div>
         } 
+      }
 
         @if (lessonContent?.length > 0 && !isAddLesson) {
-          <div class="text-end">
-            <button (click)="editLessonContent()" class="btn mt-2"> <i class="bi bi-pencil-square"></i> Edit</button> 
-          </div>
+          @if (isAddButton) {
+            <div class="text-end">
+              <button (click)="editLessonContent()" class="btn mt-2"> <i class="bi bi-pencil-square"></i> Edit</button> 
+            </div>
+          }
             <video #videoPlayer width="740" height="400" controls *ngIf="lessonContent?.[0]?.url">
               <source [src]="sanitizeVidoUrl(lessonContent?.[0]?.url)"  type="video/mp4"/>
               Your browser does not support the video tag.

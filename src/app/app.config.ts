@@ -1,39 +1,29 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HttpService } from '../@core/services/httpService';
-import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { AuthInterceptor } from '../@core/interceptor/auth.interceptor';
-import { LoaderInterceptor } from '../@core/interceptor/loader.inteerceptor';
+import { httpInterceptorProviders } from '../@core/provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withFetch(),),
-    provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes), 
+    provideHttpClient(withFetch()),
+    importProvidersFrom(HttpClientModule),
+    httpInterceptorProviders,
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
     provideClientHydration(),
     provideAnimationsAsync(),
-    providePrimeNG({ 
+    providePrimeNG({
       theme: {
-          preset: Aura
+        preset: Aura
       }
-  }),
-  MessageService,
-  ConfirmationService,
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  },
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: LoaderInterceptor,
-    multi: true
-  }
+    }),
+    MessageService,
+    ConfirmationService
   ]
 };

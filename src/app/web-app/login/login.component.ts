@@ -66,7 +66,9 @@ export class LoginComponent {
       this.httpService.post('/auth/google', {token}).subscribe( 
       (res: any) => {
         localStorage.setItem('token', res.token)
-        this.router.navigate([''])
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 100);
       },
       (error: any) => {
         this.errorMsg = error.error.retMsg

@@ -36,6 +36,7 @@ export class LessonComponent {
   text: string = "";
   videoPreviewUrl: string | undefined = '';
   isEdit: boolean = false;
+  isAddButton: boolean = false;
   @ViewChild('moduleForm') moduleForm!: NgForm;
   @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
   @ViewChild('fu') fileUploader!: HTMLInputElement;
@@ -57,7 +58,8 @@ export class LessonComponent {
       this.httpService.get('/lesson/get', { moduleId: this.moduleId }).subscribe((res: any) => {
         this.lessons = res.lessons;
         this.currentLesson = this.lessons[0];
-        this.moduleHeader = res.lessons[0].moduleId.title
+        this.moduleHeader = res.lessons[0].moduleId.title;
+        this.isAddButton = res.button
         resolve(true)
       })
     })

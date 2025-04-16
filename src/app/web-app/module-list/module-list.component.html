@@ -2,12 +2,13 @@
     <div class="d-flex justify-content-between">
         <div>
             <h1 class="page-title mb-2">First Year Courses</h1>
-            <p class="subtitle mb-4">Select a course to access audio lectures</p>
+            <p class="subtitle mb-4">Select a course to access video lectures</p>
         </div>
-
-        <div>
-           <button class="btn" (click)="openDialog()"><i class="bi bi-plus"></i> Add</button> 
-        </div>
+        @if (isAddButton) {
+          <div>
+             <button class="btn" (click)="openDialog()"><i class="bi bi-plus"></i> Add</button> 
+          </div>
+        }
     </div>
 
     <div class="row g-4">
@@ -17,14 +18,16 @@
             <div class="course-card card">
                 <div class="card-header">
                     {{course.title}}
-                    <div class="text-end">
-                      <button  [pTooltip]="'Edit'" (click)="editModule(course)">
-                        <i class="bi bi-pencil-square"></i>
-                      </button>
-                      <button [pTooltip]="'Delete'" (click)="deleteModule(course)">
-                        <i class="bi bi-trash-fill"></i>
-                      </button>
-                    </div>
+                    @if (isAddButton) {
+                      <div class="text-end">
+                        <button  [pTooltip]="'Edit'" (click)="editModule(course)">
+                          <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button [pTooltip]="'Delete'" (click)="deleteModule(course)">
+                          <i class="bi bi-trash-fill"></i>
+                        </button>
+                      </div>
+                    }
                 </div>
                 <div class="card-body" (click)="navigateToLesson(course._id)">
                     <p class="course-description">{{course.description}}</p>
