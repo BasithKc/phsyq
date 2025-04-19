@@ -1,0 +1,35 @@
+<div class="container main-container py-4">
+    <div class="row course-mapping-container">
+        <div class="col-md-3">
+            <p-listbox [options]="users" [(ngModel)]="selectedUser" optionLabel="name" (onChange)="selectUser(selectedUser)" [filter]="true" class="w-full md:w-56"></p-listbox>
+
+        </div>
+        <div class="col-md-9">
+            <!-- Course Mapping Table -->
+            <p-table [value]="years" [groupRowsBy]="'year'"  rowGroupMode="subheader" 
+            sortField="year" [sortOrder]="1" [tableStyle]="{ 'min-width': '50rem' }" class="p-mt-3">
+                <ng-template pTemplate="header">       
+                    <tr>
+                        <th>Module</th>
+                        <th>Access</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="groupheader" let-year>
+                    <tr>
+                        <td colspan="4" class="group-header">Year {{ year.year }}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-module>
+                    <tr>
+                        <td>{{ module.title }}</td>
+                        <td>
+                            <p-checkbox [(ngModel)]="module.access" (onChange)="changeAccess(module)" binary="true"></p-checkbox>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+        </div>
+    
+    </div>
+</div>

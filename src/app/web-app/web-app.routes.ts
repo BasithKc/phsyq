@@ -10,7 +10,8 @@ export const webAppRoutes: Routes = [
         children: [
             { path: "", component: HomeComponent },
             { path: "module-list/:year-id", component: ModuleListComponent },
-            { path: "lesson/:module-id", component: LessonComponent }
+            { path: "lesson/:module-id", component: LessonComponent },
+            {path: 'administration', loadChildren: () => import("./administration/administration.route").then(m => m.administrationRoutes)}
         ]
     }
 ];

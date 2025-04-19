@@ -42,7 +42,7 @@ export class ModuleListComponent {
   }
 
   getModules() {
-    this.httpService.get('/module/get', {year: this.currentYear}).subscribe((res: any) => {
+    this.httpService.get('/module/getModule', {year: this.currentYear}).subscribe((res: any) => {
       this.modules = res.modules
       this.isAddButton = res.button
     })
@@ -69,8 +69,12 @@ export class ModuleListComponent {
     })
   }
 
-  navigateToLesson(moduleId: string) {
-    this.router.navigate(['lesson', moduleId])
+  navigateToLesson(module: any) {
+    if(!module.access){
+      this.messageService.add({ severity: 'error', summary: 'Access Denied', detail: 'You do not have access to this module.' });
+      return;
+    }
+    this.router.navigate(['lesson', module._id])
   }
 
   deleteModule(course: Module) {

@@ -58,24 +58,26 @@ export class LessonComponent {
       this.httpService.get('/lesson/get', { moduleId: this.moduleId }).subscribe((res: any) => {
         this.lessons = res.lessons;
         this.currentLesson = this.lessons[0];
-        this.moduleHeader = res.lessons[0].moduleId.title;
-        this.isAddButton = res.button
+        this.moduleHeader = res.lessons?.[0]?.moduleId?.title;
+        this.isAddButton = res.button;        
         resolve(true)
       })
     })
   }
 
   getLessonContent() {
-    this.httpService.get('/lesson/getContent', { lessonId: this.currentLesson._id }).subscribe((res: any) => {
-      this.lessonContent = res.lessonContent;
-      setTimeout(() => {
-        this.videoPlayer?.nativeElement.load();
-      }, 0)
-      if (this.lessonContent.length > 0) {
-        this.videoPreviewUrl = this.sanitizeVidoUrl(this.lessonContent[0].url)
-
-      }
-    })
+    if(this.currentLesson) {
+      this.httpService.get('/lesson/getContent', { lessonId: this.currentLesson?._id }).subscribe((res: any) => {
+        this.lessonContent = res.lessonContent;
+        setTimeout(() => {
+          this.videoPlayer?.nativeElement.load();
+        }, 0)
+        if (this.lessonContent.length > 0) {
+          this.videoPreviewUrl = this.sanitizeVidoUrl(this.lessonContent[0].url)
+  
+        }
+      })
+    }
   }
 
   openDialog() {

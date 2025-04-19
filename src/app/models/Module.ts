@@ -4,6 +4,6 @@ export class Module {
     code!: string;
     title!: string;
     description!: string;
-    lectureCount!: number;
+    lessonCount!: number;
     opsMode!: string;
 }

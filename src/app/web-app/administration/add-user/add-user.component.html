@@ -1,0 +1,65 @@
+<form #userForm="ngForm">
+    <div class="space-y-4">
+      <div class="grid grid-cols-1 gap-4">
+        <div class="flex justify-center mt-2">
+          <p-iftalabel>
+             <input pInputText name="name" id="name" [(ngModel)]="user.name" autocomplete="off" />
+             <label for="name" class="required">Name</label>
+         </p-iftalabel>
+      </div>
+      
+      <div class="flex justify-center mt-4">
+        <p-iftalabel>
+           <input pInputText name="email" id="email" type="email" [(ngModel)]="user.email" autocomplete="off" />
+           <label for="email" class="required">Email</label>
+       </p-iftalabel>
+    </div>
+
+    <div class="flex justify-center mt-4">
+      <p-iftalabel>
+        <input [disabled]="user.opsMode == 'UPDATE'" pInputText name="password" id="password" [(ngModel)]="user.password" autocomplete="off" />
+         <label for="password" class="required">Password</label>
+     </p-iftalabel>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6 mt-4">
+        <label class="inline-flex items-center space-x-2">
+          <p-checkbox
+            name="isAdmin"
+            [binary]="true"
+            [trueValue]="1"
+            [falseValue]="0"
+            [(ngModel)]="user.isAdmin"
+            class="form-checkbox"
+            class="me-2"
+          />
+          <span class="me-2">Is Admin?</span>
+        </label>
+      </div>
+      <div class="col-md-6 mt-4">
+        <label class="inline-flex items-center space-x-2">
+          <p-checkbox
+            name="isCourse"
+            [binary]="true"
+            [trueValue]="1"
+            [falseValue]="0"
+            [(ngModel)]="user.isCourseAccess"
+            class="form-checkbox"
+            class="me-2"
+          />
+          <span class="me-2">Is Course Access?</span>
+        </label>
+      </div>
+
+  </div>
+      </div>
+    </div>
+    <div class="text-end mt-4">
+      <button type="button" class="mr-2  btn cancel-btn" (click)="closeDialog()"><i
+          class="fa-solid fa-times me-2"></i>Cancel</button>
+          <button type="button" class="btn-green hover:bg-[#d99d3f] save-btn btn" (click)="save()"><i
+            class="fa-solid fa-save me-2"></i>Save</button>
+    </div>
+  </form>

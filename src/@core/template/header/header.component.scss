@@ -1,10 +1,12 @@
 .sign-in{
-    text-decoration: none;
-    color: #ca0057;
-    cursor: pointer;
-    font-weight: 600;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  background: #ca0057;
+  padding: 5px 14px;
+  border-radius: 10px;
 }
-
   .profile-dialog {
     display: flex;
     align-items: center;
@@ -44,3 +46,12 @@
         padding: .7rem;
       }    
  }
+.logout {
+  color: red;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* removes the slight jump effect */
+}

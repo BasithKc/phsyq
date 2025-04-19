@@ -17,7 +17,9 @@
         <div class="col-md-6 col-lg-4" >
             <div class="course-card card">
                 <div class="card-header">
+                  <div>
                     {{course.title}}
+                  </div>
                     @if (isAddButton) {
                       <div class="text-end">
                         <button  [pTooltip]="'Edit'" (click)="editModule(course)">
@@ -29,13 +31,13 @@
                       </div>
                     }
                 </div>
-                <div class="card-body" (click)="navigateToLesson(course._id)">
+                <div class="card-body" (click)="navigateToLesson(course)">
                     <p class="course-description">{{course.description}}</p>
                     <div class="lecture-info">
                         <div class="icon-circle">
                             <i class="bi bi-play-fill"></i>
                         </div>
-                        <!-- {{course.lectureCount}} -->
+                        {{course.lessonCount}}
                           lectures
                     </div>
                 </div>

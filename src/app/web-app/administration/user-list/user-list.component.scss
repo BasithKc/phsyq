@@ -1,0 +1,22 @@
+.table-container {
+    overflow: auto;
+    height: calc(100vh - 200px);
+    min-height: 500px;
+    padding: 10px;
+    // border: 1px dotted currentColor;
+}
+button {
+    background-color: #ca0057;
+    border-radius: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+:host ::ng-deep {
+    .p-paginator {
+        margin-top: 15px !important;
+    }
+
+    .p-listbox {
+        height: calc(100vh - 160px) !important;
+    }
+}

@@ -14,6 +14,24 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home</a>
                     </li>
+                    @if (loggedUser?.isAdmin) {
+                        <li class="nav-item dropdown" style="position: relative;">
+                            <a
+                              class="nav-link dropdown-toggle"
+                              href="#"
+                              id="adminDropdown"
+                              role="button"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              Administration
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                              <li><a class="dropdown-item"[routerLink]="['/administration/user-list']">User List</a></li>
+                              <li><a class="dropdown-item"[routerLink]="['/administration/course-mapping']">Course Mapping</a></li>
+                            </ul>
+                          </li>
+                      }
                 </ul>
                 <div>
                     @if (loggedUser) {
@@ -22,7 +40,7 @@
                         </a>
                           
                     }@else { 
-                        <a [routerLink]="['/login']" class="sign-in">Signin</a>
+                        <a [routerLink]="['/login']" class="sign-in shadow">Signin</a>
                     }
                 </div>
             </div>
@@ -41,11 +59,14 @@
   contentStyleClass="profile-dialog-content"
 >    <div class="profile-dialog">
       <div class="avatar">
-        {{ loggedUser.name?.charAt(0).toUpperCase() }}
+        {{ loggedUser?.name?.charAt(0).toUpperCase() }}
       </div>
       <div class="details">
-        <div class="name">{{ loggedUser.name }}</div>
-        <div class="email">{{ loggedUser.email }}</div>
+        <div class="name">{{ loggedUser?.name }}</div>
+        <div class="email">{{ loggedUser?.email }}</div>
+        <div class="logout" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </div>
       </div>
     </div>
 </p-dialog>
