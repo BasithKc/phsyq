@@ -7,7 +7,7 @@
     
     <div class="row">
       <!-- Sidebar with lecture list -->
-      <div class="col-md-4 sidebar mb-4 mb-md-0 shadow white-bg">
+      <div class="col-md-4 sidebar mb-4 mb-md-0 shadow white-bg order-md-1">
         <div class="d-flex justify-content-between align-items-center sidebar-header">
           <h2 class="mt-2">Lectures</h2>
           @if (isAddButton) {
@@ -37,7 +37,7 @@
       </div>
       
       <!-- Main content -->
-      <div class="col-md-8 shadow main-content white-bg">
+      <div class="col-md-8 shadow main-content white-bg order-md-2 order-sm-1">
         @if (isAddButton) {
           <div class="text-end">
               @if (lessonContent?.length == 0 && !isAddLesson) {
