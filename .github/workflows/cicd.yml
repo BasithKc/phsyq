@@ -62,7 +62,7 @@ jobs:
 
       - name: Run docker container
         run: |
-          docker run -d -p 80:80 -p 443:443 --name psyq-angular-app-container-container --restart unless-stopped --network app-network basith7618/psyq-angular-app-container:latest
+          docker run -d -p 80:80 -p 443:443 --name psyq-angular-app-container --restart unless-stopped --network app-network basith7618/psyq-angular-app:latest
 
 
       - name: Debug container
