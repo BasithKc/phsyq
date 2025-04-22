@@ -45,7 +45,7 @@ RUN chown -R nginx:nginx /tmp/nginx \
 #   && chmod 644 /etc/nginx/conf.d/default.conf
 
 # Copy built angular files
-COPY --from=build /app/dist/broswer/ .
+COPY --from=build /app/dist/browser/ .
 RUN chown -R nginx:nginx /usr/share/nginx/html \
   && chmod -R 755 /usr/share/nginx/html
 
