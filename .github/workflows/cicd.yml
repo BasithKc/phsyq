@@ -62,12 +62,14 @@ jobs:
 
       - name: Run docker container
         run: |
-          sudo chown -R root:root /etc/letsencrypt
-          sudo chmod -R 755 /etc/letsencrypt
+          # sudo chown -R root:root /etc/letsencrypt
+          # sudo chmod -R 755 /etc/letsencrypt
           # sudo chmod 644 /etc/letsencrypt/live/bagmytrip.in/*.pem
           # sudo chmod 644 /etc/letsencrypt/archive/bagmytrip.in/*.pem
 
-          docker run -d -p 80:80 -p 443:443 -v /etc/letsencrypt:/etc/letsencrypt:ro --name psyq-angular-app-container-container  --tmpfs /tmp --restart unless-stopped --network app-network basith7618/psyq-angular-app-container:latest
+          # docker run -d -p 80:80 -p 443:443 -v /etc/letsencrypt:/etc/letsencrypt:ro --name psyq-angular-app-container-container  --tmpfs /tmp --restart unless-stopped --network app-network basith7618/psyq-angular-app-container:latest
+          docker run -d -p 80:80 -p 443:443 --name psyq-angular-app-container-container --restart unless-stopped --network app-network basith7618/psyq-angular-app-container:latest
+
 
       - name: Debug container
         run: |
