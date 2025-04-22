@@ -1,7 +1,7 @@
 <div class="container py-5">
     <div class="d-flex justify-content-between">
         <div>
-            <h1 class="page-title mb-2">First Year Courses</h1>
+            <h1 class="page-title mb-2">{{currentYear == 1 ? 'First' : currentYear == 2 ? 'Second' : 'Third'}} Year Courses</h1>
             <p class="subtitle mb-4">Select a course to access video lectures</p>
         </div>
         @if (isAddButton) {
@@ -21,7 +21,7 @@
                     {{course.title}}
                   </div>
                     @if (isAddButton) {
-                      <div class="text-end">
+                      <div class="text-end d-flex">
                         <button  [pTooltip]="'Edit'" (click)="editModule(course)">
                           <i class="bi bi-pencil-square"></i>
                         </button>
@@ -72,8 +72,8 @@
 
     <div class="flex justify-center mt-4">
       <p-iftalabel>
-         <textarea pInputText [required]="true" name="description" id="description" [(ngModel)]="input.description" autocomplete="off"></textarea>
-         <label for="description" class="required">Description</label>
+         <textarea pInputText name="description" id="description" [(ngModel)]="input.description" autocomplete="off"></textarea>
+         <label for="description" >Description</label>
      </p-iftalabel>
   </div>
       </div>

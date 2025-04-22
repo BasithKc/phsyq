@@ -1,6 +1,7 @@
 <app-header></app-header>
 <p-confirmdialog />
 <p-toast />
+<p-progressSpinner *ngIf="isLoading" styleClass="custom-spinner"></p-progressSpinner>
 <div class="layout-content-wrapper" >
   <div class="layout-content" (scroll)="scrollHandler($event)">
     <div class="layout-content-inner">

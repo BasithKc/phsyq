@@ -49,7 +49,8 @@
           </div>
           @if (isAddLesson) {
             <div class="flex flex-col gap-6 items-center justify-center mt-4">
-              <p-fileupload #fu mode="basic" chooseLabel="Choose" (onSelect)="onVideoSelect($event)" chooseIcon="pi pi-upload" name="demo[]"  accept="video/*" maxFileSize="1000000000"/>
+              <!-- <p-fileupload #fu mode="basic" chooseLabel="Choose" (onSelect)="onVideoSelect($event)" chooseIcon="pi pi-upload" name="demo[]"  accept="video/*" maxFileSize="10000000000"/> -->
+              <input type="text" pInputText [(ngModel)]="url" placeholder="Paste the link here" />
           </div>
           <div *ngIf="videoPreviewUrl" class="flex items-center gap-2 text-gray-700 preview-container">
             <i class="bi bi-camera-video-fill me-2"></i>
@@ -70,10 +71,18 @@
               <button (click)="editLessonContent()" class="btn mt-2"> <i class="bi bi-pencil-square"></i> Edit</button> 
             </div>
           }
-            <video #videoPlayer width="740" height="400" controls *ngIf="lessonContent?.[0]?.url">
-              <source [src]="sanitizeVidoUrl(lessonContent?.[0]?.url)"  type="video/mp4"/>
-              Your browser does not support the video tag.
-            </video>
+          <div #videoWrapper class="video-container" >
+            <!-- <video class="video-js vjs-default-skin vjs-big-play-centered" #videoPlayer disablePictureInPicture width="780" height="500" controlsList="nodownload" (contextmenu)="$event.preventDefault()" controls *ngIf="lessonContent?.[0]?.url">
+              <source src="http://localhost:3000/public/videos/6804e86bf3ac70464280a4d9/master.m3u8" type="application/x-mpegURL"/>
+            </video> -->
+            <!-- <div *ngIf="showWatermark" class="water-mark" [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }">
+              {{email}}<br>
+              {{name}}
+            </div> -->
+            @if (safeYoutubeUrl) {
+              <iframe width="560" height="315" allowfullscreen [src]="safeYoutubeUrl" frameborder="0"></iframe>
+            }
+          </div>
   
             <div class="mt-4 note-section" [innerHTML]="lessonContent?.[0]?.note"></div>
         }
