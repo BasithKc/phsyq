@@ -39,10 +39,10 @@ RUN chown -R nginx:nginx /tmp/nginx \
   /etc/letsencrypt
 
 # Copy nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY default.conf /etc/nginx/conf.d/default.conf
-RUN chown nginx:nginx /etc/nginx/conf.d/default.conf \
-  && chmod 644 /etc/nginx/conf.d/default.conf
+# COPY nginx.conf /etc/nginx/nginx.conf
+# COPY default.conf /etc/nginx/conf.d/default.conf
+# RUN chown nginx:nginx /etc/nginx/conf.d/default.conf \
+#   && chmod 644 /etc/nginx/conf.d/default.conf
 
 # Copy built angular files
 COPY --from=build /app/dist/phsyq/broswer/ .
@@ -60,13 +60,13 @@ RUN touch /tmp/nginx.pid \
   && chmod 644 /tmp/nginx.pid
 
 # Modify nginx.conf to run as nginx user
-RUN sed -i 's/user  nginx;//g' /etc/nginx/nginx.conf
+# RUN sed -i 's/user  nginx;//g' /etc/nginx/nginx.conf
 
 # Create SSL directory structure
-RUN mkdir -p /etc/letsencrypt/live/bagmytrip.in \
-  /etc/letsencrypt/archive/bagmytrip.in \
-  && chown -R nginx:nginx /etc/letsencrypt \
-  && chmod -R 755 /etc/letsencrypt
+# RUN mkdir -p /etc/letsencrypt/live/bagmytrip.in \
+#   /etc/letsencrypt/archive/bagmytrip.in \
+#   && chown -R nginx:nginx /etc/letsencrypt \
+#   && chmod -R 755 /etc/letsencrypt
 
 EXPOSE 80
 EXPOSE 443
