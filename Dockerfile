@@ -24,6 +24,12 @@ RUN mkdir -p /tmp/nginx \
   /etc/nginx/conf.d \
   /etc/letsencrypt
 
+  COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN mkdir -p /var/run/nginx && chown nginx:nginx /var/run/nginx
+
+
+
 # Set permissions for nginx directories
 RUN chown -R nginx:nginx /tmp/nginx \
   /var/cache/nginx \
@@ -38,12 +44,6 @@ RUN chown -R nginx:nginx /tmp/nginx \
   /etc/nginx/conf.d \
   /etc/letsencrypt
 
-# Copy nginx config
-# COPY nginx.conf /etc/nginx/nginx.conf
-# COPY default.conf /etc/nginx/conf.d/default.conf
-# RUN chown nginx:nginx /etc/nginx/conf.d/default.conf \
-#   && chmod 644 /etc/nginx/conf.d/default.conf
-
 # Copy built angular files
 COPY --from=build /app/dist/phsyq/browser/ .
 RUN chown -R nginx:nginx /usr/share/nginx/html \
@@ -52,21 +52,12 @@ RUN chown -R nginx:nginx /usr/share/nginx/html \
 # Add build info
 COPY --from=build /app/build-time.txt /usr/share/nginx/html/
 RUN chown nginx:nginx /usr/share/nginx/html/build-time.txt \
-  && chmod 644 /usr/share/nginx/html/build-time.txt
+&& chmod 644 /usr/share/nginx/html/build-time.txt
 
 # Create nginx pid file
 RUN touch /tmp/nginx.pid \
   && chown nginx:nginx /tmp/nginx.pid \
   && chmod 644 /tmp/nginx.pid
-
-# Modify nginx.conf to run as nginx user
-# RUN sed -i 's/user  nginx;//g' /etc/nginx/nginx.conf
-
-# Create SSL directory structure
-# RUN mkdir -p /etc/letsencrypt/live/bagmytrip.in \
-#   /etc/letsencrypt/archive/bagmytrip.in \
-#   && chown -R nginx:nginx /etc/letsencrypt \
-#   && chmod -R 755 /etc/letsencrypt
 
 EXPOSE 80
 EXPOSE 443
