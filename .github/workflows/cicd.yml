@@ -38,7 +38,7 @@ jobs:
       - name: Build docker image
         run: |
           docker build --no-cache -t basith7618/psyq-angular-app .
-          docker tag basith7618/psyq-angular-app:latest basith7618/psyq-angular-app:$(date +%s)
+          # docker tag basith7618/psyq-angular-app:latest basith7618/psyq-angular-app:$(date +%s)
 
       - name: Publish image to dockerhub
         run: |
