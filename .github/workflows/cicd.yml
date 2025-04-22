@@ -68,6 +68,6 @@ jobs:
       - name: Debug container
         run: |
           echo "Container logs:"
-          docker logs psyq-angular-app-container-container
+          docker logs psyq-angular-app-container
           echo "Container status:"
           docker ps -a
