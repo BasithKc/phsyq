@@ -12,4 +12,7 @@
         height: calc(100vh - 90px);
         overflow: auto;
     }
+    .p-listbox-list-container{
+        max-height: 100vh !important;
+    }
 }

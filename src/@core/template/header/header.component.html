@@ -6,7 +6,14 @@
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+                @if (loggedUser) {
+                  <a (click)="showProfileDialog = true" class="text-decoration-none">
+                      <i class="bi bi-person-circle logo-color fs-5"></i>
+                  </a>
+                    
+              }@else { 
+                  <a [routerLink]="['/login']" class="sign-in shadow">Signin</a>
+              }
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
