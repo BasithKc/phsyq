@@ -219,12 +219,16 @@
   @media screen and (max-width: 768px) {
     .signup-content, .signin-content {
       flex-direction: column; }
+
+      .form-title{
+        text-align: center;
+      }
   
-    .signup-form {
+    .signup-form, .signin-form {
       margin-left: 0px;
       margin-right: 0px;
       padding-left: 0px;
-      padding: 0 30px; }
+      padding: 0 0px; }
   
     .signin-image {
       margin-left: 0px;

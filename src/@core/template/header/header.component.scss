@@ -44,7 +44,10 @@
  :host ::ng-deep{
     .p-dialog-header{
         padding: .7rem;
-      }    
+      }   
+    .navbar-toggler {
+      border: none;
+    } 
  }
 .logout {
   color: red;
