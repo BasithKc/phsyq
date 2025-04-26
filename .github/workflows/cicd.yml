@@ -61,12 +61,18 @@ jobs:
 
       - name: Run docker container
         run: |
-          docker run -d -p 80:80 -p 443:443 --name psyq-angular-app-container --restart unless-stopped --network app-network basith7618/psyq-angular-app:latest
+          sudo chown -R root:root /etc/letsencrypt
+          sudo chmod -R 755 /etc/letsencrypt
+          sudo chmod 644 /etc/letsencrypt/live/psyqlearning.com/*.pem
+          sudo chmod 644 /etc/letsencrypt/archive/psyqlearning.com/*.pem
 
+          docker run -d -p 80:80 -p 443:443 -v /etc/letsencrypt:/etc/letsencrypt:ro --name psyq-angular-app-container  --tmpfs /tmp --restart unless-stopped --network app-network basith7618/psyq-angular-app:latest
 
       - name: Debug container
         run: |
-          echo "Container logs:"
+         echo "Container logs:"
           docker logs psyq-angular-app-container
           echo "Container status:"
           docker ps -a
+          echo "SSL certificates:"
+          ls -l /etc/letsencrypt/live/psqlearning.com/
