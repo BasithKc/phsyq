@@ -9,9 +9,9 @@
             <ng-template #header>
                 <tr>
                     <th>Action</th>
-                    <th pSortableColumn="name" >Name  <p-sortIcon field="name" /></th>
-                    <th pSortableColumn="email" >Email  <p-sortIcon field="email" /></th>
-                    <th>Admin</th>
+                    <th pSortableColumn="name" >Name  <p-sortIcon field="name" />  <p-columnFilter field="name" matchMode="contains" display="menu"></p-columnFilter></th>
+                    <th pSortableColumn="email" >Email  <p-sortIcon field="email" />  <p-columnFilter field="email" matchMode="contains" display="menu"></p-columnFilter></th>
+                    <th pSortableColumn="isAdmin">Admin <p-sortIcon field="isAdmin" /></th>
                     <th pSortableColumn="isVerified" >Status  <p-sortIcon field="isVerified" /></th>
                 </tr>
             </ng-template>
