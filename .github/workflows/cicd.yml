@@ -75,4 +75,4 @@ jobs:
           echo "Container status:"
           docker ps -a
           echo "SSL certificates:"
-          ls -l /etc/letsencrypt/live/psqlearning.com/
+          ls -l /etc/letsencrypt/live/psyqlearning.com/
