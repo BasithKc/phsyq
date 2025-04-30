@@ -7,15 +7,16 @@
     
     <div class="row">
       <!-- Sidebar with lecture list -->
-      <div class="col-md-4 sidebar mb-4 mb-md-0 shadow white-bg order-md-1">
-        <div class="d-flex justify-content-between align-items-center sidebar-header">
-          <h2 class="mt-2">Lectures</h2>
-          @if (isAddButton) {
-            <div>
-              <button class="btn" (click)="openDialog()"><i class="bi bi-plus"></i> Add Lesson</button> 
-           </div>
-          }
-        </div>
+      <div class="col-md-4">
+        <div class="sidebar mb-4 mb-md-0 shadow white-bg order-md-1">
+          <div class="d-flex justify-content-between align-items-center sidebar-header">
+            <h2 class="mt-2">Lectures</h2>
+            @if (isAddButton) {
+              <div>
+                <button class="btn" (click)="openDialog()"><i class="bi bi-plus"></i> Add Lesson</button> 
+             </div>
+            }
+          </div>
         @for (lesson of lessons; track $index) {
           <div class="lecture-item" (click)="changeLesson(lesson)" [ngClass]="{'active': lesson._id == currentLesson._id}">
             <div class="lesson-header">
@@ -34,59 +35,61 @@
             <p class="lecture-description">{{lesson.description}}</p>
           </div>
         }
+        </div>
       </div>
       
       <!-- Main content -->
-      <div class="col-md-8 shadow main-content white-bg order-md-2 order-sm-1">
-        @if (isAddButton) {
-          <div class="text-end">
-              @if (lessonContent?.length == 0 && !isAddLesson) {
-              <button (click)="addLessonContent()" class="btn mt-2"><i class="bi bi-plus"></i> Add Lesson Content</button> 
-              }@else if(isAddLesson) {
-                <button (click)="submitLesson()"  class="btn mt-2 submit-btn"><i class="bi bi-bookmark-check-fill me-2"></i>Submit</button> 
-                <button (click)="cancelEdit()"  class="btn mt-2 cancel-btn"><i class="bi bi-x-lg me-2"></i>Cancel</button> 
-              }
-          </div>
-          @if (isAddLesson) {
-            <div class="flex flex-col gap-6 items-center justify-center mt-4">
-              <!-- <p-fileupload #fu mode="basic" chooseLabel="Choose" (onSelect)="onVideoSelect($event)" chooseIcon="pi pi-upload" name="demo[]"  accept="video/*" maxFileSize="10000000000"/> -->
-              <input type="text" pInputText [(ngModel)]="url" placeholder="Paste the link here" />
-          </div>
-          <div *ngIf="videoPreviewUrl" class="flex items-center gap-2 text-gray-700 preview-container">
-            <i class="bi bi-camera-video-fill me-2"></i>
-            <span class="truncate">{{ getFileName(videoPreviewUrl) }}</span>
-            <button class="dlt-btn dlt-preview" (click)="deleteVideo()" [pTooltip]="'Delete'">
-              <i class="bi bi-trash-fill"></i>
-            </button>
-          </div>
-          <div class="mt-4">
-            <p-editor [(ngModel)]="text" [style]="{ height: '320px' }" />
-          </div>
-        } 
-      }
-
-        @if (lessonContent?.length > 0 && !isAddLesson) {
+      <div class="col-md-8">
+        <div class="shadow main-content white-bg order-md-2 order-sm-1">
           @if (isAddButton) {
             <div class="text-end">
-              <button (click)="editLessonContent()" class="btn mt-2"> <i class="bi bi-pencil-square"></i> Edit</button> 
+                @if (lessonContent?.length == 0 && !isAddLesson) {
+                <button (click)="addLessonContent()" class="btn mt-2"><i class="bi bi-plus"></i> Add Lesson Content</button> 
+                }@else if(isAddLesson) {
+                  <button (click)="submitLesson()"  class="btn mt-2 submit-btn"><i class="bi bi-bookmark-check-fill me-2"></i>Submit</button> 
+                  <button (click)="cancelEdit()"  class="btn mt-2 cancel-btn"><i class="bi bi-x-lg me-2"></i>Cancel</button> 
+                }
             </div>
-          }
-          <div #videoWrapper class="video-container" >
-            <!-- <video class="video-js vjs-default-skin vjs-big-play-centered" #videoPlayer disablePictureInPicture width="780" height="500" controlsList="nodownload" (contextmenu)="$event.preventDefault()" controls *ngIf="lessonContent?.[0]?.url">
-              <source src="http://localhost:3000/public/videos/6804e86bf3ac70464280a4d9/master.m3u8" type="application/x-mpegURL"/>
-            </video> -->
-            <!-- <div *ngIf="showWatermark" class="water-mark" [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }">
-              {{email}}<br>
-              {{name}}
-            </div> -->
-            @if (safeYoutubeUrl) {
-              <iframe width="560" height="315" allowfullscreen [src]="safeYoutubeUrl" frameborder="0"></iframe>
-            }
-          </div>
-  
-            <div class="mt-4 note-section" [innerHTML]="lessonContent?.[0]?.note"></div>
+            @if (isAddLesson) {
+              <div class="flex flex-col gap-6 items-center justify-center mt-4">
+                <!-- <p-fileupload #fu mode="basic" chooseLabel="Choose" (onSelect)="onVideoSelect($event)" chooseIcon="pi pi-upload" name="demo[]"  accept="video/*" maxFileSize="10000000000"/> -->
+                <input type="text" pInputText [(ngModel)]="url" placeholder="Paste the link here" />
+            </div>
+            <div *ngIf="videoPreviewUrl" class="flex items-center gap-2 text-gray-700 preview-container">
+              <i class="bi bi-camera-video-fill me-2"></i>
+              <span class="truncate">{{ getFileName(videoPreviewUrl) }}</span>
+              <button class="dlt-btn dlt-preview" (click)="deleteVideo()" [pTooltip]="'Delete'">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+            <div class="mt-4">
+              <p-editor [(ngModel)]="text" [style]="{ height: '320px' }" />
+            </div>
+          } 
         }
-        
+  
+          @if (lessonContent?.length > 0 && !isAddLesson) {
+            @if (isAddButton) {
+              <div class="text-end">
+                <button (click)="editLessonContent()" class="btn mt-2"> <i class="bi bi-pencil-square"></i> Edit</button> 
+              </div>
+            }
+            <div #videoWrapper class="video-container" >
+              <!-- <video class="video-js vjs-default-skin vjs-big-play-centered" #videoPlayer disablePictureInPicture width="780" height="500" controlsList="nodownload" (contextmenu)="$event.preventDefault()" controls *ngIf="lessonContent?.[0]?.url">
+                <source src="http://localhost:3000/public/videos/6804e86bf3ac70464280a4d9/master.m3u8" type="application/x-mpegURL"/>
+              </video> -->
+              <!-- <div *ngIf="showWatermark" class="water-mark" [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }">
+                {{email}}<br>
+                {{name}}
+              </div> -->
+              @if (safeYoutubeUrl) {
+                <iframe width="560" height="315" allowfullscreen [src]="safeYoutubeUrl" frameborder="0"></iframe>
+              }
+            </div>
+    
+              <div class="mt-4 note-section" [innerHTML]="lessonContent?.[0]?.note"></div>
+          }
+        </div>
       </div>
     </div>
   </div>
