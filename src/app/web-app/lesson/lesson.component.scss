@@ -30,7 +30,7 @@
   
   .sidebar {
     border-right: 1px solid #e9ecef;
-    padding-right: 1rem;
+    padding: 1rem;
     height: calc(100vh - 45px);
     overflow: auto;
     min-height: 450px;
@@ -95,6 +95,7 @@
   height: calc(100vh - 45px);
   overflow: auto;
   min-height: 450px;
+  padding: 1rem
 }
 
 .preview-container{
@@ -214,5 +215,6 @@ iframe{
     height: calc(100vh - 220px);
     overflow: auto;
     min-height: 350px;
+    padding: 10px
   }
 }
