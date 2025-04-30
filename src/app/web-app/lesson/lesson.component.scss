@@ -210,4 +210,9 @@ iframe{
     display: flex;
     flex-direction: column-reverse; /* This will reverse the order of child elements */
   }
+  .main-content{
+    height: calc(100vh - 220px);
+    overflow: auto;
+    min-height: 350px;
+  }
 }
