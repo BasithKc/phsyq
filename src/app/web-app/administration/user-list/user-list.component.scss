@@ -19,4 +19,9 @@ button {
     .p-listbox {
         height: calc(100vh - 160px) !important;
     }
+  .p-datatable-table-container{
+    min-height: 500px;
+    overflow: auto;
+    height: calc(100vh - 237px);
+  }
 }
