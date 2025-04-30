@@ -31,7 +31,7 @@
   .sidebar {
     border-right: 1px solid #e9ecef;
     padding: 1rem;
-    height: calc(100vh - 45px);
+    height: calc(100vh - 180px);
     overflow: auto;
     min-height: 450px;
   }
@@ -92,7 +92,7 @@
 }
 
 .main-content{
-  height: calc(100vh - 45px);
+  height: calc(100vh - 181px);
   overflow: auto;
   min-height: 450px;
   padding: 1rem
