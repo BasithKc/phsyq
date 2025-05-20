@@ -1,5 +1,4 @@
-
-.hero-section{
+.hero-section {
     background: linear-gradient(rgba(255, 255, 255, 0.46), rgb(28 25 25 / 50%)), url(../../../assets/images/Nowadays.jpeg);
     background-color: #deecf9;
     padding-bottom: 15px;
@@ -9,18 +8,20 @@
     background-position: bottom center;
     background-size: cover;
 }
-.card{
+
+.card {
     padding: 15px;
 }
 
-img.year-card-img{
+img.year-card-img {
     border-radius: 15px;
 }
 
-.feature-section{
+.feature-section {
     padding-top: 25px;
 }
-.card-title{
+
+.card-title {
     color: #4949dd;
     font-size: 14px;
     background: #e4f1ff;
@@ -28,4 +29,9 @@ img.year-card-img{
     padding: 5px 12px;
     border-radius: 20px;
     margin-top: 5px;
+}
+
+.price-tag {
+    font-size: 20px;
+    font-weight: 600;
 }

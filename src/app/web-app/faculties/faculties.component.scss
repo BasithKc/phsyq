@@ -1,0 +1,42 @@
+.carousel-inner {
+    .carousel-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .carousel-item img {
+        object-fit: cover;
+        width: 50%;
+    }
+}
+
+.header {
+    text-align: center !important;
+    color: white;
+    margin-top: 10px;
+}
+
+.carousel-item {
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-item.active {
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+    .carousel-item img {
+        object-fit: cover;
+        width: 70%;
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-item img {
+        object-fit: cover;
+        width: 85% !important;
+    }
+}

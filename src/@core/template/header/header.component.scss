@@ -1,4 +1,4 @@
-.sign-in{
+.sign-in {
   text-decoration: none;
   color: white;
   cursor: pointer;
@@ -6,59 +6,66 @@
   background: #ca0057;
   padding: 5px 14px;
   border-radius: 10px;
+  font-size: 16px;
 }
-  .profile-dialog {
+
+.profile-dialog {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4a90e2;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 10px 0;
-  
-    .avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #4a90e2;
-      color: white;
-      font-weight: bold;
-      font-size: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    justify-content: center;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      font-weight: 600;
+      font-size: 17px;
     }
-  
-    .details {
-      display: flex;
-      flex-direction: column;
-  
-      .name {
-        font-weight: 600;
-        font-size: 17px;
-      }
-  
-      .email {
-        font-size: 14px;
-        color: #777;
-      }
+
+    .email {
+      font-size: 14px;
+      color: #777;
     }
   }
- :host ::ng-deep{
-    .p-dialog-header{
-        padding: .7rem;
-      }   
-    .navbar-toggler {
-      border: none
-    } 
- }
+}
+
+:host ::ng-deep {
+  .p-dialog-header {
+    padding: .7rem;
+  }
+
+  .navbar-toggler {
+    border: none
+  }
+}
+
 .logout {
   color: red;
   margin-top: 10px;
   cursor: pointer;
 }
+
 .nav-item.dropdown:hover .dropdown-menu {
   display: block;
-  margin-top: 0; /* removes the slight jump effect */
+  margin-top: 0;
+  /* removes the slight jump effect */
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: #ca0057 !important;
 }
