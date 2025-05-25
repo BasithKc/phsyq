@@ -1,29 +1,11 @@
 <!-- faculty-carousel.component.html -->
 <div class="container">
-    <h2 class="text-center header">Our Faculties</h2>
-    <div id="facultyCarousel" class="carousel slide p-2" data-bs-ride="carousel" data-bs-interval="4000">
-        <div class="carousel-indicators">
-            <button *ngFor="let faculty of faculties; let i = index" type="button"
-                [attr.data-bs-target]="'#facultyCarousel'" [attr.data-bs-slide-to]="i"
-                [ngClass]="{'active': i === currentSlideIndex}" [attr.aria-current]="i === 0 ? 'true' : null"
-                [attr.aria-label]="'Slide ' + (i+1)">
-            </button>
-        </div>
-        <div class="carousel-inner">
-            <div *ngFor="let faculty of faculties; let i = index" class="carousel-item"
-                [ngClass]="{'active': i === currentSlideIndex}">
-                <img [src]="faculty.image" [alt]="faculty.name" class="d-block">
-                <div class="carousel-caption">
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#facultyCarousel" (click)="prevSlide()" data-bs-slide="prev" style="z-index: 2; opacity: 1; cursor: pointer;">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#facultyCarousel" (click)="nextSlide()" data-bs-slide="next" style="z-index: 2; opacity: 1; cursor: pointer;">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+  <h2 class="header">Our Faculties</h2>
+  <p-carousel [value]="faculties" [numVisible]="1" [numScroll]="1" [circular]="true"  autoplayInterval="3000"  styleClass="faculty-carousel">
+    <ng-template pTemplate="item" let-faculty>
+      <div class="carousel-item-wrapper">
+        <img [src]="faculty.image" [alt]="faculty.name" class="faculty-image" />
+      </div>
+    </ng-template>
+  </p-carousel>
 </div>

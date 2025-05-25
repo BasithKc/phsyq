@@ -1,0 +1,43 @@
+.header {
+    text-align: center !important;
+    color: black;
+    font-weight: 700;
+}
+
+.project-card {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.banner-container {
+    background: whitesmoke;
+    min-height: 300px;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px 125px;
+    width: 100vw;
+    padding-top: 90px !important;
+}
+
+:host ::ng-deep {
+    .p-card-body {
+        height: 370px !important;
+    }
+}
+
+// Responsive typography and spacing
+@media (max-width: 1024px) {
+
+
+    .banner-container {
+        padding: 0 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .banner-container {
+        padding: 0 20px;
+    }
+}

@@ -1,42 +1,39 @@
-.carousel-inner {
-    .carousel-item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-    }
-
-    .carousel-item img {
-        object-fit: cover;
-        width: 50%;
-    }
-}
-
 .header {
-    text-align: center !important;
-    color: white;
-    margin-top: 10px;
+  text-align: center !important;
+  color: white;
+  margin-top: 10px;
 }
 
-.carousel-item {
-  position: relative;
-  z-index: 1;
+::ng-deep .single-image-carousel .p-carousel-items-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //   height: 30px;  
+  overflow: hidden;
 }
 
-.carousel-item.active {
-  z-index: 2;
+::ng-deep .single-image-carousel .p-carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (max-width: 1024px) {
-    .carousel-item img {
-        object-fit: cover;
-        width: 70%;
-    }
+.carousel-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 600px) {
-    .carousel-item img {
-        object-fit: cover;
-        width: 85% !important;
-    }
+img.faculty-image {
+  height: auto;
+  width: 530px;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  img.faculty-image {
+    width: 255px;
+  }
+  
 }
