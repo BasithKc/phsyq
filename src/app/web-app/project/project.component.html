@@ -3,9 +3,9 @@
     <div class="p-3 w-100 project-card">
         @for (card of cards; track $index) {
             <div class="p-2">
-                <p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+                <p-card [style]="{ width: '23rem', overflow: 'hidden' }">
                     <ng-template #header>
-                        <img alt="Card" style="width: 320px; height: 170px;" [src]="card.image" />
+                        <img alt="Card" style="width: 368px; height: 200px;" [src]="card.image" />
                     </ng-template>
                     <ng-template #title> {{card.title}} </ng-template>
                     <p>
