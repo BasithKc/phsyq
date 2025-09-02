@@ -20,21 +20,21 @@ export class HomeComponent {
         title: 'Year 1',
         description: 'Foundation courses in psychology, research methods, and human behavior.',
         img: '/assets/images/1.jpg',
-        price: 3000
+        price: 4000
       },
       { 
         slNo: 2, 
         title: 'Year 2',
         description: 'Advanced concepts in cognitive psychology and behavioral analysis.',
         img: '/assets/images/2.jpg' ,
-        price: 3500
+        price: 4000
       },
       { 
         slNo: 3, 
         title: 'Year 3',
         description: 'Specialized topics and practical applications in clinical psychology.',
         img: '/assets/images/3.jpg',
-        price: 3999
+        price: 4500
       },
     ]
   }
