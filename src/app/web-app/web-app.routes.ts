@@ -10,8 +10,8 @@ export const webAppRoutes: Routes = [
     {
         path: '', component: WebAppComponent,
         children: [
-            { path: "", component: LandingPageComponent },
-            { path: "home", component: HomeComponent },
+            // { path: "", component: LandingPageComponent },
+            { path: "", component: HomeComponent },
             { path: "module-list/:year-id", component: ModuleListComponent },
             { path: "lesson/:module-id", component: LessonComponent },
             { path: "faculty", component: FacultiesComponent},
